@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "607583469500",
+    "project_id": "medapp-f9798",
+    "storage_bucket": "medapp-f9798.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607583469500:android:76345c7faf1580c10af5b9",
+        "android_client_info": {
+          "package_name": "com.example.project1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmi6kjQu2Pz9KCTbPY8WQyk2o0xJlMeqI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

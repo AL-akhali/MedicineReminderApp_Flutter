@@ -29,7 +29,7 @@ class WelcomeScreen extends StatelessWidget {
            const SizedBox(
              height: 100,
            ),
-           const Text('اهــتــم بــصـــحـتـك',style: TextStyle(
+           const Text('C A R E ABOUT YOUR H E A L T H',style: TextStyle(
              fontSize: 30,
              color: Colors.white
            ),),
@@ -46,7 +46,7 @@ class WelcomeScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30),
                 border: Border.all(color: Colors.white),
               ),
-              child: const Center(child: Text('تسجيل الدخول',style: TextStyle(
+              child: const Center(child: Text('Sign in',style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.white
@@ -67,7 +67,7 @@ class WelcomeScreen extends StatelessWidget {
                  borderRadius: BorderRadius.circular(30),
                  border: Border.all(color: Colors.white),
                ),
-               child: const Center(child: Text('عمل حساب',style: TextStyle(
+               child: const Center(child: Text('Create Account',style: TextStyle(
                    fontSize: 20,
                    fontWeight: FontWeight.bold,
                    color: Colors.black
@@ -75,12 +75,11 @@ class WelcomeScreen extends StatelessWidget {
              ),
            ),
            const Spacer(),
-           const Text('تسجيل الدخول عبــــــر',style: TextStyle(
+           const Text('Sign in by ..:',style: TextStyle(
                fontSize: 17,
                color: Colors.white
            ),),//
           const SizedBox(height: 12,),
-           // const Image(image: AssetImage('assets/social.png'))
           ]
        ),
      ),

@@ -116,7 +116,7 @@ class loginScreen extends StatelessWidget {
                                   );
                                 }
                               },
-                              child: Text(state is LoginLoadingState ? "انتظـــر ..." :"تسجيل الدخول" , style: TextStyle(fontSize: 17,fontWeight:FontWeight.bold),),
+                              child: Text(state is LoginLoadingState ? "Loading...." :"Sign in" , style: TextStyle(fontSize: 17,fontWeight:FontWeight.bold),),
                               padding: EdgeInsets.symmetric(vertical: 12.5),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(6)
@@ -133,13 +133,13 @@ class loginScreen extends StatelessWidget {
                                     {
                                       Navigator.push(context, MaterialPageRoute(builder: (context) => RegScreen()));
                                     },
-                                    child: Text('عمل حســاب',style: TextStyle(
+                                    child: Text('Create Account',style: TextStyle(
                                         color:Color(0xff281537),
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold
                                     ),)
                                 ),
-                                Text('ليس لــدي حساب...',style: TextStyle(color:Color(0xffB81736),),),
+                                Text('I dont have aaccount ..',style: TextStyle(color:Color(0xffB81736),),),
                               ],
                             ),
                           ],

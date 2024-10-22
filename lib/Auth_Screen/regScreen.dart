@@ -105,7 +105,7 @@ class RegScreen extends StatelessWidget {
                                   );
                                 }
                               },
-                              child: Text(state is RegisterLoadingState ?"انتــــظر....." :"تسجيل" , style: TextStyle(fontSize: 17,fontWeight:FontWeight.bold),),
+                              child: Text(state is RegisterLoadingState ?"Loading ..." :"Sign Up" , style: TextStyle(fontSize: 17,fontWeight:FontWeight.bold),),
                               padding: EdgeInsets.symmetric(vertical: 12.5),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(6)
@@ -125,13 +125,13 @@ class RegScreen extends StatelessWidget {
                                     {
                                       // Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
                                     },
-                                    child: Text('تسجيل الدخول',style: TextStyle(
+                                    child: Text('Sign in',style: TextStyle(
                                         color: Colors.blueAccent,
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold
                                     ),)
                                 ),
-                                Text('لــدي بالفعل حساب'),
+                                Text('I have an Acoount ....'),
                               ],
                             )
                           ],

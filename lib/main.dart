@@ -34,13 +34,12 @@ void main() async {
   }
 
   runApp(MyApp(
-    startWidget: widget,
+    widget,
   ));
 }
 
 class MyApp extends StatefulWidget {
-  final Widget? startWidget;
-  MyApp({this.startWidget});
+  MyApp(Widget widget,);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -96,7 +95,7 @@ class _MyAppState extends State<MyApp> {
                   dialTextColor: Colors.white),
             ),
             debugShowCheckedModeBanner: false,
-            home: Layoutscreen(),
+            home: widget,
           ),
         );
       }),

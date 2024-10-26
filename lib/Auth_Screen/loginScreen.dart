@@ -8,11 +8,20 @@ import 'package:project1/Auth_Screen/regScreen.dart';
 import 'package:project1/Layout_Screen/layoutScreen.dart';
 import 'package:project1/Shared/network/local_network.dart';
 
-class loginScreen extends StatelessWidget {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
+class loginScreen extends StatefulWidget {
+
   loginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<loginScreen> createState() => _loginScreenState();
+}
+
+class _loginScreenState extends State<loginScreen> {
+  final emailController = TextEditingController();
+
+  final passwordController = TextEditingController();
+
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +60,7 @@ class loginScreen extends StatelessWidget {
                         Color(0xff281537),
                       ]),
                     ),
-                    child: const Padding(
+                    child: Padding(
                       padding: EdgeInsets.only(top: 60.0, left: 22),
                       child: Text(
                         'Hello\nSign in!',
@@ -63,9 +72,9 @@ class loginScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 200.0),
+                    padding: EdgeInsets.only(top: 200.0),
                     child: Container(
-                      decoration: const BoxDecoration(
+                      decoration:  BoxDecoration(
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(40), topRight: Radius.circular(40)),
                         color: Colors.white,
@@ -73,7 +82,7 @@ class loginScreen extends StatelessWidget {
                       height: double.infinity,
                       width: double.infinity,
                       child:  Padding(
-                        padding: const EdgeInsets.only(left: 18.0,right: 18),
+                        padding:  EdgeInsets.only(left: 18.0,right: 18),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -90,7 +99,7 @@ class loginScreen extends StatelessWidget {
                               hintText: 'Password',
                               isSrecure: true,
                             ),
-                            const SizedBox(height: 20,),
+                            SizedBox(height: 20,),
                             Center(
                               child: TextButton(
                                   onPressed: ()

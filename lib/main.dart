@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:project1/Auth_Screen/WelcomeScreen.dart';
 import 'package:project1/Auth_Screen/auth_cubit/auth_cubit.dart';
@@ -65,37 +66,45 @@ class _MyAppState extends State<MyApp> {
             BlocProvider(create: (context) => AuthCubit()),
             BlocProvider(create: (context) => LayoutCubit()..getUserData()),
           ],
-          child: MaterialApp(
-            theme: ThemeData(
-              appBarTheme: AppBarTheme(
-                toolbarHeight: 7.h,
-                elevation: 0,
-                iconTheme: IconThemeData(
-                  color: Color(0xffB81736),
-                  size: 30,
+          child: ScreenUtilInit(
+            designSize: Size(360, 690),
+            minTextAdapt: true,
+            splitScreenMode: true,
+            builder: (context,Widget? child)
+            {
+              return MaterialApp(
+                theme: ThemeData(
+                  appBarTheme: AppBarTheme(
+                    toolbarHeight: SizeExtension(7).h,
+                    elevation: 0,
+                    iconTheme: IconThemeData(
+                      color: Color(0xffB81736),
+                      size: 30,
+                    ),
+                  ),
+                  textTheme: TextTheme(
+                    headlineMedium: GoogleFonts.aBeeZee(
+                        fontSize: 35,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.black),
+                    titleSmall: GoogleFonts.poppins(
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
+                    labelLarge: GoogleFonts.aBeeZee(
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
+                  ),
+                  timePickerTheme: TimePickerThemeData(
+                      dayPeriodColor: Color(0xffB81736),
+                      dialBackgroundColor: Color(0xff281537),
+                      dialTextColor: Colors.white),
                 ),
-              ),
-              textTheme: TextTheme(
-                headlineMedium: GoogleFonts.aBeeZee(
-                    fontSize: 35,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.black),
-                titleSmall: GoogleFonts.poppins(
-                  fontSize: 20,
-                  color: Colors.black,
-                ),
-                labelLarge: GoogleFonts.aBeeZee(
-                  fontSize: 20,
-                  color: Colors.black,
-                ),
-              ),
-              timePickerTheme: TimePickerThemeData(
-                  dayPeriodColor: Color(0xffB81736),
-                  dialBackgroundColor: Color(0xff281537),
-                  dialTextColor: Colors.white),
-            ),
-            debugShowCheckedModeBanner: false,
-            home: widget,
+                debugShowCheckedModeBanner: false,
+                home: WelcomeScreen(),
+              );
+            },
           ),
         );
       }),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project1/Auth_Screen/loginScreen.dart';
 import 'package:project1/Auth_Screen/regScreen.dart';
+import 'package:sizer/sizer.dart';
+import 'package:flutter/src/widgets/media_query.dart';
 
 
 class WelcomeScreen extends StatelessWidget {
@@ -22,18 +24,24 @@ class WelcomeScreen extends StatelessWidget {
        ),
        child: Column(
          children: [
-           const Padding(
-             padding: EdgeInsets.only(top: 200.0),
-             child: Image(image: AssetImage('assets/images/time.png',)),
+           Container(
+             height: 50.h,
+             width: 50.w,
+             child: Padding(
+               padding: EdgeInsets.only(top: 200.0),
+               child: Image(image: AssetImage('assets/images/time.png',),height:50.h,width: 50.w,),
+             ),
            ),
-           const SizedBox(
-             height: 100,
-           ),
-           const Text('C A R E ABOUT YOUR H E A L T H',style: TextStyle(
-             fontSize: 30,
-             color: Colors.white
-           ),),
-          const SizedBox(height: 30,),
+            Center(
+              child: Container(
+                height: 15.h,
+                width: 50.w,
+                child: Text('C A R E \n ABOUT YOUR \n H E A L T H',style: TextStyle(
+                 fontSize: 20.sp,
+                 color: Colors.white
+                           ),),
+              ),
+            ),
           GestureDetector(
             onTap: (){
               Navigator.push(context,

@@ -58,194 +58,190 @@ class _NewEnteryScreenState extends State<NewEnteryScreen> {
         ),
         body: Provider<NewEnteryBloc>.value(
           value: _newEnteryBloc,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              PanalTitle(title: 'Medicine Name', isRequired: true),
-              TextFormField(
-                textCapitalization: TextCapitalization.words,
-                controller: nameController,
-                maxLength: 12,
-                decoration: InputDecoration(
-                  border: UnderlineInputBorder(),
-                ),
-                style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                      color: Colors.black,
-                    ),
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              PanalTitle(title: 'Dose', isRequired: true),
-              TextFormField(
-                textCapitalization: TextCapitalization.words,
-                controller: doseController,
-                maxLength: 12,
-                decoration: InputDecoration(
-                  border: UnderlineInputBorder(),
-                ),
-                style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                      color: Colors.black,
-                    ),
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              PanalTitle(title: 'Medicine Type', isRequired: false),
-              StreamBuilder<MedicineType>(
-                  stream: _newEnteryBloc.selectedMedicineType,
-                  builder: (context, snapshot) {
-                    return SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          MedicineTypeColumn(
-                              medicineType: MedicineType.drops,
-                              name: 'Drops',
-                              iconValue: 'assets/images/drops.png',
-                              isSelected: snapshot.data == MedicineType.drops
-                                  ? true
-                                  : false),
-                          MedicineTypeColumn(
-                              medicineType: MedicineType.cream,
-                              name: 'Cream',
-                              iconValue: 'assets/images/cream.png',
-                              isSelected: snapshot.data == MedicineType.cream
-                                  ? true
-                                  : false),
-                          MedicineTypeColumn(
-                              medicineType: MedicineType.capsule,
-                              name: 'Capsule',
-                              iconValue: 'assets/images/capsule.png',
-                              isSelected: snapshot.data == MedicineType.capsule
-                                  ? true
-                                  : false),
-                          MedicineTypeColumn(
-                              medicineType: MedicineType.pills,
-                              name: 'Pills',
-                              iconValue: 'assets/images/pills.png',
-                              isSelected: snapshot.data == MedicineType.pills
-                                  ? true
-                                  : false),
-                          MedicineTypeColumn(
-                              medicineType: MedicineType.syringe,
-                              name: 'Syringe',
-                              iconValue: 'assets/images/syringe.png',
-                              isSelected: snapshot.data == MedicineType.syringe
-                                  ? true
-                                  : false),
-                          MedicineTypeColumn(
-                              medicineType: MedicineType.syrup,
-                              name: 'Syrup',
-                              iconValue: 'assets/images/syrup.png',
-                              isSelected: snapshot.data == MedicineType.syrup
-                                  ? true
-                                  : false),
-                        ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                PanalTitle(title: 'Medicine Name', isRequired: true),
+                TextFormField(
+                  textCapitalization: TextCapitalization.words,
+                  controller: nameController,
+                  maxLength: 12,
+                  decoration: InputDecoration(
+                    border: UnderlineInputBorder(),
+                  ),
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        color: Colors.black,
                       ),
-                    );
-                  }),
-              SizedBox(
-                height: 12,
-              ),
-              PanalTitle(title: 'Internal Selection', isRequired: true),
-              IntervalSelection(),
-              PanalTitle(title: 'Starting Time', isRequired: true),
-              SelectTime(),
-              SizedBox(
-                height: 15,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 60, right: 15),
-                child: SizedBox(
-                  width: 80.w,
-                  height: 7.h,
-                  child: TextButton(
-                      style: TextButton.styleFrom(
-                        backgroundColor: Color(0xff281537),
-                        shape: StadiumBorder(),
+                ),
+                PanalTitle(title: 'Dose', isRequired: true),
+                TextFormField(
+                  textCapitalization: TextCapitalization.words,
+                  controller: doseController,
+                  maxLength: 12,
+                  decoration: InputDecoration(
+                    border: UnderlineInputBorder(),
+                  ),
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                        color: Colors.black,
                       ),
-                      onPressed: () {
-                        String? medicineName;
-                        int? doseage;
-                        //name
-                        if (nameController.text == "") {
-                          _newEnteryBloc.submitError(EntryError.nameNull);
-                          return;
-                        }
-                        if (nameController.text != "") {
-                          medicineName = nameController.text;
-                        }
-                        //doseage
-                        if (nameController.text == "") {
-                          doseage = 0;
-                        }
-                        if (nameController.text != "") {
-                          doseage = int.parse(doseController.text);
-                        }
-                        for (var medicine in globalBloc.medicineList$!.value) {
-                          if (medicineName == medicine.medicineName) {
-                            _newEnteryBloc
-                                .submitError(EntryError.nameDuplicate);
+                ),
+                PanalTitle(title: 'Medicine Type', isRequired: false),
+                StreamBuilder<MedicineType>(
+                    stream: _newEnteryBloc.selectedMedicineType,
+                    builder: (context, snapshot) {
+                      return SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            MedicineTypeColumn(
+                                medicineType: MedicineType.drops,
+                                name: 'Drops',
+                                iconValue: 'assets/images/drops.png',
+                                isSelected: snapshot.data == MedicineType.drops
+                                    ? true
+                                    : false),
+                            MedicineTypeColumn(
+                                medicineType: MedicineType.cream,
+                                name: 'Cream',
+                                iconValue: 'assets/images/cream.png',
+                                isSelected: snapshot.data == MedicineType.cream
+                                    ? true
+                                    : false),
+                            MedicineTypeColumn(
+                                medicineType: MedicineType.capsule,
+                                name: 'Capsule',
+                                iconValue: 'assets/images/capsule.png',
+                                isSelected: snapshot.data == MedicineType.capsule
+                                    ? true
+                                    : false),
+                            MedicineTypeColumn(
+                                medicineType: MedicineType.pills,
+                                name: 'Pills',
+                                iconValue: 'assets/images/pills.png',
+                                isSelected: snapshot.data == MedicineType.pills
+                                    ? true
+                                    : false),
+                            MedicineTypeColumn(
+                                medicineType: MedicineType.syringe,
+                                name: 'Syringe',
+                                iconValue: 'assets/images/syringe.png',
+                                isSelected: snapshot.data == MedicineType.syringe
+                                    ? true
+                                    : false),
+                            MedicineTypeColumn(
+                                medicineType: MedicineType.syrup,
+                                name: 'Syrup',
+                                iconValue: 'assets/images/syrup.png',
+                                isSelected: snapshot.data == MedicineType.syrup
+                                    ? true
+                                    : false),
+                          ],
+                        ),
+                      );
+                    }),
+                SizedBox(
+                  height: 12,
+                ),
+                PanalTitle(title: 'Internal Selection', isRequired: true),
+                IntervalSelection(),
+                PanalTitle(title: 'Starting Time', isRequired: true),
+                SelectTime(),
+                SizedBox(
+                  height: 15,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 60, right: 15),
+                  child: SizedBox(
+                    width: 70.w,
+                    height: 5.h,
+                    child: TextButton(
+                        style: TextButton.styleFrom(
+                          backgroundColor: Color(0xff281537),
+                          shape: StadiumBorder(),
+                        ),
+                        onPressed: () {
+                          String? medicineName;
+                          int? doseage;
+                          //name
+                          if (nameController.text == "") {
+                            _newEnteryBloc.submitError(EntryError.nameNull);
                             return;
                           }
-                        }
-                        if (_newEnteryBloc.selectIntervals!.value == 0) {
-                          _newEnteryBloc.submitError(EntryError.intrval);
-                          return;
-                        }
-                        if (_newEnteryBloc.selectedTimeOfDay$!.value ==
-                            'none') {
-                          _newEnteryBloc.submitError(EntryError.startTime);
-                          return;
-                        }
-                        String medicineType = _newEnteryBloc
-                            .selectedMedicineType!.value
-                            .toString()
-                            .substring(13);
-
-                        int intrtval = _newEnteryBloc.selectIntervals!.value;
-                        String startTime =
-                            _newEnteryBloc.selectedTimeOfDay$!.value;
-
-                        List<int> intIDs =
-                            makeIDs(24 / _newEnteryBloc.selectIntervals!.value);
-                        List<String> notifIDs =
-                            intIDs.map((i) => i.toString()).toList();
-
-                        Medicine newEntryMedicine = Medicine(
-                          notificationIDs: notifIDs,
-                          medicineName: medicineName!,
-                          doseage: doseage!,
-                          medicineType: medicineType,
-                          interval: intrtval,
-                          startTime: startTime,
-                        );
-
-                        //update
-                        globalBloc.updateMedicineList(newEntryMedicine);
-                        //Notifications
-                        schaduleNotif(newEntryMedicine);
-
-                        //Success Page
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SuccessScreen()));
-                      },
-                      child: Center(
-                        child: Text(
-                          'Confirm',
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelLarge!
-                              .copyWith(color: Colors.white),
-                        ),
-                      )),
-                ),
-              )
-            ],
+                          if (nameController.text != "") {
+                            medicineName = nameController.text;
+                          }
+                          //doseage
+                          if (nameController.text == "") {
+                            doseage = 0;
+                          }
+                          if (nameController.text != "") {
+                            doseage = int.parse(doseController.text);
+                          }
+                          for (var medicine in globalBloc.medicineList$!.value) {
+                            if (medicineName == medicine.medicineName) {
+                              _newEnteryBloc
+                                  .submitError(EntryError.nameDuplicate);
+                              return;
+                            }
+                          }
+                          if (_newEnteryBloc.selectIntervals!.value == 0) {
+                            _newEnteryBloc.submitError(EntryError.intrval);
+                            return;
+                          }
+                          if (_newEnteryBloc.selectedTimeOfDay$!.value ==
+                              'none') {
+                            _newEnteryBloc.submitError(EntryError.startTime);
+                            return;
+                          }
+                          String medicineType = _newEnteryBloc
+                              .selectedMedicineType!.value
+                              .toString()
+                              .substring(13);
+            
+                          int intrtval = _newEnteryBloc.selectIntervals!.value;
+                          String startTime =
+                              _newEnteryBloc.selectedTimeOfDay$!.value;
+            
+                          List<int> intIDs =
+                              makeIDs(24 / _newEnteryBloc.selectIntervals!.value);
+                          List<String> notifIDs =
+                              intIDs.map((i) => i.toString()).toList();
+            
+                          Medicine newEntryMedicine = Medicine(
+                            notificationIDs: notifIDs,
+                            medicineName: medicineName!,
+                            doseage: doseage!,
+                            medicineType: medicineType,
+                            interval: intrtval,
+                            startTime: startTime,
+                          );
+            
+                          //update
+                          globalBloc.updateMedicineList(newEntryMedicine);
+                          //Notifications
+                          schaduleNotif(newEntryMedicine);
+            
+                          //Success Page
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SuccessScreen()));
+                        },
+                        child: Center(
+                          child: Text(
+                            'Confirm',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge!
+                                .copyWith(color: Colors.white),
+                          ),
+                        )),
+                  ),
+                )
+              ],
+            ),
           ),
         ));
   }
@@ -331,23 +327,23 @@ class _NewEnteryScreenState extends State<NewEnteryScreen> {
       android: androidPlatform,
       iOS: iOSPlatform,
     );
-    for(int i=0; i<(24/medicine.interval!).floor();i++)
-      {
-        if(hour + (medicine.interval)>23) {
-          hour = hour + (medicine.interval!*i)-24;
-        }else{
-          hour = hour + (medicine.interval!*i);
-        }
-        await flutterLocalNotificationsPlugin.show(
-          int.parse(medicine.notificationIDs![i]),
-          'Reminder: ${medicine.medicineName}',
-          medicine.medicineType.toString() != MedicineType.none.toString() ?
-              'ITS Time To Take Your ${medicine.medicineType!.toLowerCase()},':
-              Time(hour,minute,0),
-          platformChannel,
-        );
-        hour = ogValue;
-      }
+    // for(int i=0; i<(24/medicine.interval!).floor();i++)
+    //   {
+    //     if(hour + (medicine.interval)>23) {
+    //       hour = hour + (medicine.interval!*i)-24;
+    //     }else{
+    //       hour = hour + (medicine.interval!*i);
+    //     }
+    //     await flutterLocalNotificationsPlugin.show(
+    //       int.parse(medicine.notificationIDs![i]),
+    //       'Reminder: ${medicine.medicineName}',
+    //       medicine.medicineType.toString() != MedicineType.none.toString() ?
+    //           'ITS Time To Take Your ${medicine.medicineType!.toLowerCase()},':
+    //           Time(hour,minute,0),
+    //       platformChannel,
+    //     );
+    //     hour = ogValue;
+    //   }
   }
 }
 
@@ -430,7 +426,7 @@ class _IntervalSelectionState extends State<IntervalSelection> {
           children: [
             Text(
               'Remind me every',
-              style: Theme.of(context).textTheme.labelLarge,
+              style: Theme.of(context).textTheme.bodySmall,
             ),
             DropdownButton(
               iconEnabledColor: Color(0xff281537),
@@ -441,7 +437,7 @@ class _IntervalSelectionState extends State<IntervalSelection> {
                       'Selected as interval',
                       style: Theme.of(context)
                           .textTheme
-                          .labelLarge!
+                          .bodySmall!
                           .copyWith(color: Color(0xffB81736)),
                     )
                   : null,
@@ -511,7 +507,7 @@ class MedicineTypeColumn extends StatelessWidget {
               child: Center(
                   child: Text(name,
                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            color: Colors.white,
+                            color: Colors.white,fontSize: 12
                           ))))
         ],
       ),

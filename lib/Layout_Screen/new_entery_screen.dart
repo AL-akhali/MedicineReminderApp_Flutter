@@ -327,23 +327,23 @@ class _NewEnteryScreenState extends State<NewEnteryScreen> {
       android: androidPlatform,
       iOS: iOSPlatform,
     );
-    // for(int i=0; i<(24/medicine.interval!).floor();i++)
-    //   {
-    //     if(hour + (medicine.interval)>23) {
-    //       hour = hour + (medicine.interval!*i)-24;
-    //     }else{
-    //       hour = hour + (medicine.interval!*i);
-    //     }
-    //     await flutterLocalNotificationsPlugin.show(
-    //       int.parse(medicine.notificationIDs![i]),
-    //       'Reminder: ${medicine.medicineName}',
-    //       medicine.medicineType.toString() != MedicineType.none.toString() ?
-    //           'ITS Time To Take Your ${medicine.medicineType!.toLowerCase()},':
-    //           Time(hour,minute,0),
-    //       platformChannel,
-    //     );
-    //     hour = ogValue;
-    //   }
+    for(int i=0; i<(24/medicine.interval!).floor();i++)
+      {
+        if(hour + (medicine.interval)>23) {
+          hour = hour + (medicine.interval!*i)-24;
+        }else{
+          hour = hour + (medicine.interval!*i);
+        }
+        await flutterLocalNotificationsPlugin.show(
+          int.parse(medicine.notificationIDs![i]),
+          'Reminder: ${medicine.medicineName}',
+          medicine.medicineType.toString() != MedicineType.none.toString() ?
+              'ITS Time To Take Your ${medicine.medicineType!.toLowerCase()},':
+              Time(hour,minute,0),
+          platformChannel,
+        );
+        hour = ogValue;
+      }
   }
 }
 
